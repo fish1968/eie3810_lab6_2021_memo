@@ -1,26 +1,26 @@
 #include "exti.h"
 
 
-//Íâ²¿ÖÐ¶Ï0·þÎñ³ÌÐò
+//å¤–éƒ¨ä¸­æ–­0æœåŠ¡ç¨‹åº
 
 extern int KeyRead;
 extern int gameStatus;
 extern int LowerMove;
 void EXTI0_IRQHandler(void)
 {
-	delay_ms(2);	//Ïû¶¶
-	if(WK_UP==1)	//WK_UP°´¼ü
+	delay_ms(2);	//æ¶ˆæŠ–
+	if(WK_UP==1)	//WK_UPæŒ‰é”®
 	{				 
 		KeyRead = KEYUP;
 		
 	}		 
-	EXTI->PR=1<<0;  //Çå³ýLINE0ÉÏµÄÖÐ¶Ï±êÖ¾Î»  
+	EXTI->PR=1<<0;  //æ¸…é™¤LINE0ä¸Šçš„ä¸­æ–­æ ‡å¿—ä½  
 }
-//Íâ²¿ÖÐ¶Ï2·þÎñ³ÌÐò
+//å¤–éƒ¨ä¸­æ–­2æœåŠ¡ç¨‹åº
 void EXTI2_IRQHandler(void)
 {
-	delay_ms(2);	//Ïû¶¶
-	if(KEY2==0)	 	//°´¼üKEY2
+	delay_ms(2);	//æ¶ˆæŠ–
+	if(KEY2==0)	 	//æŒ‰é”®KEY2
 	{
 		KeyRead = KEYLEFT;
 		if (gameStatus == 3)
@@ -28,38 +28,38 @@ void EXTI2_IRQHandler(void)
 			LowerMove = -1;
 		}
 	}		 
-	EXTI->PR=1<<2;  //Çå³ýLINE2ÉÏµÄÖÐ¶Ï±êÖ¾Î»  
+	EXTI->PR=1<<2;  //æ¸…é™¤LINE2ä¸Šçš„ä¸­æ–­æ ‡å¿—ä½  
 }
-//Íâ²¿ÖÐ¶Ï3·þÎñ³ÌÐò
+//å¤–éƒ¨ä¸­æ–­3æœåŠ¡ç¨‹åº
 void EXTI3_IRQHandler(void)
 {
-	delay_ms(2);	//Ïû¶¶
-	if(KEY1==0)	 	//°´¼üKEY1
+	delay_ms(2);	//æ¶ˆæŠ–
+	if(KEY1==0)	 	//æŒ‰é”®KEY1
 	{				 
 		KeyRead = KEYDOWN;
 	}		 
-	EXTI->PR=1<<3;  //Çå³ýLINE3ÉÏµÄÖÐ¶Ï±êÖ¾Î»  
+	EXTI->PR=1<<3;  //æ¸…é™¤LINE3ä¸Šçš„ä¸­æ–­æ ‡å¿—ä½  
 }
-//Íâ²¿ÖÐ¶Ï4·þÎñ³ÌÐò
+//å¤–éƒ¨ä¸­æ–­4æœåŠ¡ç¨‹åº
 void EXTI4_IRQHandler(void)
 {
-	delay_ms(2);	//Ïû¶¶
-	if(KEY0==0)	 	//°´¼üKEY0
+	delay_ms(2);	//æ¶ˆæŠ–
+	if(KEY0==0)	 	//æŒ‰é”®KEY0
 	{
 		KeyRead = KEYRIGHT;
 		if (gameStatus == 3) LowerMove = 1; 
 	}		 
-	EXTI->PR=1<<4;  //Çå³ýLINE4ÉÏµÄÖÐ¶Ï±êÖ¾Î»  
+	EXTI->PR=1<<4;  //æ¸…é™¤LINE4ä¸Šçš„ä¸­æ–­æ ‡å¿—ä½  
 }		   
 
 void EXTIX_Init(void)
 {
 	KEY_Init();// interrupt about key are usable only afte rkey are usable
-	Ex_NVIC_Config(GPIO_A,0,RTIR); 	//ÉÏÉýÑØ´¥·¢
-	Ex_NVIC_Config(GPIO_E,2,FTIR); 	//ÏÂ½µÑØ´¥·¢
-	Ex_NVIC_Config(GPIO_E,3,FTIR); 	//ÏÂ½µÑØ´¥·¢
- 	Ex_NVIC_Config(GPIO_E,4,FTIR); 	//ÏÂ½µÑØ´¥·¢  
-	MY_NVIC_Init(2,3,EXTI0_IRQn,0);	//Ã»ÓÐÇÀÕ¼ÓÅÏÈ¼¶
+	Ex_NVIC_Config(GPIO_A,0,RTIR); 	//ä¸Šå‡æ²¿è§¦å‘
+	Ex_NVIC_Config(GPIO_E,2,FTIR); 	//ä¸‹é™æ²¿è§¦å‘
+	Ex_NVIC_Config(GPIO_E,3,FTIR); 	//ä¸‹é™æ²¿è§¦å‘
+ 	Ex_NVIC_Config(GPIO_E,4,FTIR); 	//ä¸‹é™æ²¿è§¦å‘  
+	MY_NVIC_Init(2,3,EXTI0_IRQn,0);	//æ²¡æœ‰æŠ¢å ä¼˜å…ˆçº§
 	MY_NVIC_Init(2,2,EXTI2_IRQn,0);	//2,2 since no preempt priority doesn't mean too much actaully
 	MY_NVIC_Init(2,1,EXTI3_IRQn,0);	//
 	MY_NVIC_Init(2,0,EXTI4_IRQn,0);	//	   

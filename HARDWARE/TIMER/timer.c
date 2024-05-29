@@ -1,7 +1,7 @@
 #include "timer.h"
 
 
-//¶¨Ê±Æ÷3ÖÐ¶Ï·þÎñ³ÌÐò	 
+//å®šæ—¶å™¨3ä¸­æ–­æœåŠ¡ç¨‹åº	 
 
 int Time2 = 0;
 char TIME[40];
@@ -32,7 +32,7 @@ void TIM2_IRQHandler(void)
 			sprintf(TOUCHES,"Number of Bounces: %d", bounces);
 			sprintf(UScore, "Up Player Score:%d", upScore);
 			sprintf(LScore, "Low Player Score: %d", lowScore);
-			sprintf(TIME, "Time: %d", Time2/50); // 50 Ö¡ÂÊ
+			sprintf(TIME, "Time: %d", Time2/50); // 50 å¸§çŽ‡
 			printString(0, 700-36, TOUCHES, RED, WHITE);
 			printString(0, 700, UScore, RED, WHITE);
 			printString(0, 700+36, LScore, RED, WHITE);
@@ -170,12 +170,12 @@ void TIM2_IRQHandler(void)
 
 void TIM3_Int_Init(u16 arr,u16 psc)
 {
-	RCC->APB1ENR|=1<<1;	//TIM3Ê±ÖÓÊ¹ÄÜ    
- 	TIM3->ARR=arr;  	//Éè¶¨¼ÆÊýÆ÷×Ô¶¯ÖØ×°Öµ//¸ÕºÃ1ms    
-	TIM3->PSC=psc;  	//Ô¤·ÖÆµÆ÷7200,µÃµ½10KhzµÄ¼ÆÊýÊ±ÖÓ		  
-	TIM3->DIER|=1<<0;   //ÔÊÐí¸üÐÂÖÐ¶Ï	  
-	TIM3->CR1|=0x01;    //Ê¹ÄÜ¶¨Ê±Æ÷3
-  	MY_NVIC_Init(3,3,TIM3_IRQn,0);//ÇÀÕ¼1£¬×ÓÓÅÏÈ¼¶3£¬×é0									 
+	RCC->APB1ENR|=1<<1;	//TIM3æ—¶é’Ÿä½¿èƒ½    
+ 	TIM3->ARR=arr;  	//è®¾å®šè®¡æ•°å™¨è‡ªåŠ¨é‡è£…å€¼//åˆšå¥½1ms    
+	TIM3->PSC=psc;  	//é¢„åˆ†é¢‘å™¨7200,å¾—åˆ°10Khzçš„è®¡æ•°æ—¶é’Ÿ		  
+	TIM3->DIER|=1<<0;   //å…è®¸æ›´æ–°ä¸­æ–­	  
+	TIM3->CR1|=0x01;    //ä½¿èƒ½å®šæ—¶å™¨3
+  	MY_NVIC_Init(3,3,TIM3_IRQn,0);//æŠ¢å 1ï¼Œå­ä¼˜å…ˆçº§3ï¼Œç»„0									 
 }
 
 //handler for joypad reading
@@ -183,14 +183,14 @@ void TIM3_IRQHandler(void)
 { 		    		  			    
 	static u8 key;
 	int i;
-	if(TIM3->SR&0X0001)//Òç³öÖÐ¶Ï Ê±¼äµ½ÁË
+	if(TIM3->SR&0X0001)//æº¢å‡ºä¸­æ–­ æ—¶é—´åˆ°äº†
 	{
 		if (gameStatus >= 3) !LED1;// flash in the game!
 		
 		// Scan the joypad handler
 		// in player mode and if in the game,  it just control the upper bar or pause the game and wait for re start
 		// while in the computer mode
-		if (mode == PLAYER || gameStatus == 1) // 1-> choosing page//ÕâÀïµÄº¯ÊýÐ´µÄ²»ºÃ Ì«¸´ÔÓÁËÓ¦¸Ã¼ò»¯
+		if (mode == PLAYER || gameStatus == 1) // 1-> choosing page//è¿™é‡Œçš„å‡½æ•°å†™çš„ä¸å¥½ å¤ªå¤æ‚äº†åº”è¯¥ç®€åŒ–
 		{
 			key = JOYPAD_Read();
 			if (key)//shape out the 0 case
@@ -269,8 +269,8 @@ void TIM3_IRQHandler(void)
 		{
 			if (directionY == -1)//this means the ball is going up or go left(ofcouser here it use the up)
 			{
-				//ÀëµÃÔ¶ ¾ÍÇáËÉÓ¦¶Ô
-				//ÀëµÃ½ü ¾Í×¨ÃÅÓ¦¶Ô
+				//ç¦»å¾—è¿œ å°±è½»æ¾åº”å¯¹
+				//ç¦»å¾—è¿‘ å°±ä¸“é—¨åº”å¯¹
 				// ball is at the right part of the bar? => move right something
 				if (ballPos[1] > 300) UpperMove = (ballPos[0]+xMove*directionX - (HighBeaterPos[0] + beaterShape[0]/2));  
 				//if (ballPos[1] >200) UpperMove = (ballPos[0]>(HighBeaterPos[0]+beaterShape[0]/2))? (ballPos[0]-(HighBeaterPos[0]+beaterShape[0]/2))/2 : -((HighBeaterPos[0]+beaterShape[0])-ballPos[0])/2;
@@ -283,7 +283,7 @@ void TIM3_IRQHandler(void)
 			}
 		}	
 	}			   
-	TIM3->SR&=~(1<<0);//Çå³ýÖÐ¶Ï±êÖ¾Î» Èç¹û²»Çå³ý»áÓÐ±¯¾ç·¢Éú	    
+	TIM3->SR&=~(1<<0);//æ¸…é™¤ä¸­æ–­æ ‡å¿—ä½ å¦‚æžœä¸æ¸…é™¤ä¼šæœ‰æ‚²å‰§å‘ç”Ÿ	    
 }
 
 
@@ -321,7 +321,7 @@ void InitTimers()
 {
 	TIM2_Int_Init(200 -1, 72e2 -1);//update the time variable 0 second 1 seond .... 50Hz
 	TIM3_Int_Init(250-1, 7199);	//40Hz
-	TIM4_Int_Init(250-1, 7199);// 20Hz 100Hz ¾Í·Ç³£Ë³»¬ ÎÒ¾õµÃ¾Í40Hz°É
+	TIM4_Int_Init(250-1, 7199);// 20Hz 100Hz å°±éžå¸¸é¡ºæ»‘ æˆ‘è§‰å¾—å°±40Hzå§
 	//72E6 = 100 * 72E4
 	//1MS -> 72E6/1E3 = 72E3
 	//10mS -> 72E4

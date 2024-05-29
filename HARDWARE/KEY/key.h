@@ -7,12 +7,12 @@
 #define KEY0	PEin(4) //PE4
 #define KEY1	PEin(3)	//PE3 
 #define KEY2 	PEin(2)	//PE2
-#define WK_UP 	PAin(0)	//PA0  WK_UP¼´KEY_UP
+#define WK_UP 	PAin(0)	//PA0  WK_UPå³KEY_UP
 
-#define KEY0_PRES 	1	//KEY0°´ÏÂ
-#define KEY1_PRES	2	//KEY1°´ÏÂ
-#define KEY2_PRES	3	//KEY2°´ÏÂ
-#define WKUP_PRES   4	//KEY_UP°´ÏÂ(¼´WK_UP/KEY_UP)
+#define KEY0_PRES 	1	//KEY0æŒ‰ä¸‹
+#define KEY1_PRES	2	//KEY1æŒ‰ä¸‹
+#define KEY2_PRES	3	//KEY2æŒ‰ä¸‹
+#define WKUP_PRES   4	//KEY_UPæŒ‰ä¸‹(å³WK_UP/KEY_UP)
 
 
 #define KEYDOWN 4
@@ -25,6 +25,6 @@
 #define buttonSelect 5
 #define buttonStart 4
 
-void KEY_Init(void);//IO³õÊ¼»¯
-u8 KEY_Scan(u8);  	//°´¼üÉ¨Ãèº¯Êı					    
+void KEY_Init(void);//IOåˆå§‹åŒ–
+u8 KEY_Scan(u8);  	//æŒ‰é”®æ‰«æå‡½æ•°					    
 #endif

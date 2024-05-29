@@ -2,41 +2,41 @@
 #include "delay.h"
 
 								    
-//°´¼ü³õÊ¼»¯º¯Êı
+//æŒ‰é”®åˆå§‹åŒ–å‡½æ•°
 void KEY_Init(void)
 {
-	RCC->APB2ENR|=1<<2;     //Ê¹ÄÜPORTAÊ±ÖÓ
-	RCC->APB2ENR|=1<<6;     //Ê¹ÄÜPORTEÊ±ÖÓ
-	GPIOA->CRL&=0XFFFFFFF0;	//PA0ÉèÖÃ³ÉÊäÈë£¬Ä¬ÈÏÏÂÀ­	  
+	RCC->APB2ENR|=1<<2;     //ä½¿èƒ½PORTAæ—¶é’Ÿ
+	RCC->APB2ENR|=1<<6;     //ä½¿èƒ½PORTEæ—¶é’Ÿ
+	GPIOA->CRL&=0XFFFFFFF0;	//PA0è®¾ç½®æˆè¾“å…¥ï¼Œé»˜è®¤ä¸‹æ‹‰	  
 	GPIOA->CRL|=0X00000008; 
 	  
-	GPIOE->CRL&=0XFFF000FF;	//PE2~4ÉèÖÃ³ÉÊäÈë	  
+	GPIOE->CRL&=0XFFF000FF;	//PE2~4è®¾ç½®æˆè¾“å…¥	  
 	GPIOE->CRL|=0X00088800; 				   
-	GPIOE->ODR|=7<<2;	   	//PE2~4 vhvÉÏÀ­
+	GPIOE->ODR|=7<<2;	   	//PE2~4 vhvä¸Šæ‹‰
 } 
-//°´¼ü´¦Àíº¯Êı
-//·µ»Ø°´¼üÖµ
-//mode:0,²»Ö§³ÖÁ¬Ğø°´;1,Ö§³ÖÁ¬Ğø°´;
-//0£¬Ã»ÓĞÈÎºÎ°´¼ü°´ÏÂ
-//1£¬KEY0°´ÏÂ
-//2£¬KEY1°´ÏÂ
-//3£¬KEY2°´ÏÂ 
-//4£¬KEY3°´ÏÂ WK_UP
-//×¢Òâ´Ëº¯ÊıÓĞÏìÓ¦ÓÅÏÈ¼¶,KEY0>KEY1>KEY2>KEY3!!
+//æŒ‰é”®å¤„ç†å‡½æ•°
+//è¿”å›æŒ‰é”®å€¼
+//mode:0,ä¸æ”¯æŒè¿ç»­æŒ‰;1,æ”¯æŒè¿ç»­æŒ‰;
+//0ï¼Œæ²¡æœ‰ä»»ä½•æŒ‰é”®æŒ‰ä¸‹
+//1ï¼ŒKEY0æŒ‰ä¸‹
+//2ï¼ŒKEY1æŒ‰ä¸‹
+//3ï¼ŒKEY2æŒ‰ä¸‹ 
+//4ï¼ŒKEY3æŒ‰ä¸‹ WK_UP
+//æ³¨æ„æ­¤å‡½æ•°æœ‰å“åº”ä¼˜å…ˆçº§,KEY0>KEY1>KEY2>KEY3!!
 u8 KEY_Scan(u8 mode)
 {	 
-	static u8 key_up=1;//°´¼ü°´ËÉ¿ª±êÖ¾
-	if(mode)key_up=1;  //Ö§³ÖÁ¬°´		  
+	static u8 key_up=1;//æŒ‰é”®æŒ‰æ¾å¼€æ ‡å¿—
+	if(mode)key_up=1;  //æ”¯æŒè¿æŒ‰		  
 	if(key_up&&(KEY0==0||KEY1==0||KEY2==0||WK_UP==1))
 	{
-		delay_ms(10);//È¥¶¶¶¯ 
+		delay_ms(10);//å»æŠ–åŠ¨ 
 		key_up=0;
 		if(KEY0==0)return 1;
 		else if(KEY1==0)return 2;
 		else if(KEY2==0)return 3;
 		else if(WK_UP==1)return 4;
 	}else if(KEY0==1&&KEY1==1&&KEY2==1&&WK_UP==0)key_up=1; 	    
- 	return 0;// ÎŞ°´¼ü°´ÏÂ
+ 	return 0;// æ— æŒ‰é”®æŒ‰ä¸‹
 }
 
 

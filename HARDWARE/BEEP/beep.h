@@ -2,47 +2,47 @@
 #define __BEEP_H	 
 #include "sys.h"
 //////////////////////////////////////////////////////////////////////////////////	 
-//±¾³ÌĞòÖ»¹©Ñ§Ï°Ê¹ÓÃ£¬Î´¾­×÷ÕßĞí¿É£¬²»µÃÓÃÓÚÆäËüÈÎºÎÓÃÍ¾
-//ALIENTEKÕ½½¢STM32¿ª·¢°åV3
-//·äÃùÆ÷Çı¶¯´úÂë	   
-//ÕıµãÔ­×Ó@ALIENTEK
-//¼¼ÊõÂÛÌ³:www.openedv.com
-//´´½¨ÈÕÆÚ:2015/1/10
-//°æ±¾£ºV1.0
-//°æÈ¨ËùÓĞ£¬µÁ°æ±Ø¾¿¡£
-//Copyright(C) ¹ãÖİÊĞĞÇÒíµç×Ó¿Æ¼¼ÓĞÏŞ¹«Ë¾ 2009-2019
+//æœ¬ç¨‹åºåªä¾›å­¦ä¹ ä½¿ç”¨ï¼Œæœªç»ä½œè€…è®¸å¯ï¼Œä¸å¾—ç”¨äºå…¶å®ƒä»»ä½•ç”¨é€”
+//ALIENTEKæˆ˜èˆ°STM32å¼€å‘æ¿V3
+//èœ‚é¸£å™¨é©±åŠ¨ä»£ç 	   
+//æ­£ç‚¹åŸå­@ALIENTEK
+//æŠ€æœ¯è®ºå›:www.openedv.com
+//åˆ›å»ºæ—¥æœŸ:2015/1/10
+//ç‰ˆæœ¬ï¼šV1.0
+//ç‰ˆæƒæ‰€æœ‰ï¼Œç›—ç‰ˆå¿…ç©¶ã€‚
+//Copyright(C) å¹¿å·å¸‚æ˜Ÿç¿¼ç”µå­ç§‘æŠ€æœ‰é™å…¬å¸ 2009-2019
 //All rights reserved									  
 ////////////////////////////////////////////////////////////////////////////////// 	  
-//·äÃùÆ÷¶Ë¿Ú¶¨Òå
-#define BEEP PBout(8)	// BEEP,·äÃùÆ÷½Ó¿Ú		   
+//èœ‚é¸£å™¨ç«¯å£å®šä¹‰
+#define BEEP PBout(8)	// BEEP,èœ‚é¸£å™¨æ¥å£		   
 
-void BEEP_Init(void);	//·äÃùÆ÷³õÊ¼»¯º¯Êı	
+void BEEP_Init(void);	//èœ‚é¸£å™¨åˆå§‹åŒ–å‡½æ•°	
 
 
  #define  proport  	10000 //Tclk/(psc+1)=72000000/(7199+1)
- #define  L1       ((proport/131)-1)//µÍµ÷¡¡do µÄÖÜÆÚ¸ù¾İTout= ((arr+1)*(psc+1))/TclkÍÆ³öarrÖµ¾ÍÊÇ±¾¾ädefine¶¨ÒåµÄÖµ£¬ToutÎªÒôµ÷ÆµÂÊ131HzµÄµ¹Êı£¬Tclk=72MHz
- #define  L2       ((proport/147)-1)//µÍµ÷¡¡re µÄÖÜÆÚ
- #define  L3       ((proport/165)-1)//µÍµ÷¡¡mi µÄÖÜÆÚ
- #define  L4       ((proport/176)-1)//µÍµ÷¡¡fa µÄÖÜÆÚ
- #define  L5       ((proport/196)-1)//µÍµ÷¡¡solµÄÖÜÆÚ
- #define  L6       ((proport/220)-1)//µÍµ÷¡¡la µÄÖÜÆÚ
- #define  L7       ((proport/247)-1)//µÍµ÷¡¡si µÄÖÜÆÚ
+ #define  L1       ((proport/131)-1)//ä½è°ƒã€€do çš„å‘¨æœŸæ ¹æ®Tout= ((arr+1)*(psc+1))/Tclkæ¨å‡ºarrå€¼å°±æ˜¯æœ¬å¥defineå®šä¹‰çš„å€¼ï¼ŒToutä¸ºéŸ³è°ƒé¢‘ç‡131Hzçš„å€’æ•°ï¼ŒTclk=72MHz
+ #define  L2       ((proport/147)-1)//ä½è°ƒã€€re çš„å‘¨æœŸ
+ #define  L3       ((proport/165)-1)//ä½è°ƒã€€mi çš„å‘¨æœŸ
+ #define  L4       ((proport/176)-1)//ä½è°ƒã€€fa çš„å‘¨æœŸ
+ #define  L5       ((proport/196)-1)//ä½è°ƒã€€solçš„å‘¨æœŸ
+ #define  L6       ((proport/220)-1)//ä½è°ƒã€€la çš„å‘¨æœŸ
+ #define  L7       ((proport/247)-1)//ä½è°ƒã€€si çš„å‘¨æœŸ
 
- #define  M1       ((proport/262)-1)//ÖĞµ÷¡¡do µÄÖÜÆÚ
- #define  M2       ((proport/296)-1)//ÖĞµ÷¡¡re µÄÖÜÆÚ
- #define  M3       ((proport/330)-1)//ÖĞµ÷¡¡mi µÄÖÜÆÚ 
- #define  M4       ((proport/349)-1)//ÖĞµ÷¡¡fa µÄÖÜÆÚ
- #define  M5       ((proport/392)-1)//ÖĞµ÷¡¡solµÄÖÜÆÚ
- #define  M6       ((proport/440)-1)//ÖĞµ÷¡¡la µÄÖÜÆÚ
- #define  M7       ((proport/494)-1)//ÖĞµ÷¡¡si µÄÖÜÆÚ
+ #define  M1       ((proport/262)-1)//ä¸­è°ƒã€€do çš„å‘¨æœŸ
+ #define  M2       ((proport/296)-1)//ä¸­è°ƒã€€re çš„å‘¨æœŸ
+ #define  M3       ((proport/330)-1)//ä¸­è°ƒã€€mi çš„å‘¨æœŸ 
+ #define  M4       ((proport/349)-1)//ä¸­è°ƒã€€fa çš„å‘¨æœŸ
+ #define  M5       ((proport/392)-1)//ä¸­è°ƒã€€solçš„å‘¨æœŸ
+ #define  M6       ((proport/440)-1)//ä¸­è°ƒã€€la çš„å‘¨æœŸ
+ #define  M7       ((proport/494)-1)//ä¸­è°ƒã€€si çš„å‘¨æœŸ
 
- #define  H1       ((proport/523)-1)//¸ßµ÷¡¡do µÄÖÜÆÚ
- #define  H2       ((proport/587)-1)//¸ßµ÷¡¡re µÄÖÜÆÚ
- #define  H3       ((proport/659)-1)//¸ßµ÷¡¡mi µÄÖÜÆÚ
- #define  H4       ((proport/699)-1)//¸ßµ÷¡¡fa µÄÖÜÆÚ
- #define  H5       ((proport/784)-1)//¸ßµ÷¡¡solµÄÖÜÆÚ
- #define  H6       ((proport/880)-1)//¸ßµ÷¡¡la µÄÖÜÆÚ
- #define  H7       ((proport/988)-1)//¸ßµ÷¡¡si µÄÖÜÆÚ
+ #define  H1       ((proport/523)-1)//é«˜è°ƒã€€do çš„å‘¨æœŸ
+ #define  H2       ((proport/587)-1)//é«˜è°ƒã€€re çš„å‘¨æœŸ
+ #define  H3       ((proport/659)-1)//é«˜è°ƒã€€mi çš„å‘¨æœŸ
+ #define  H4       ((proport/699)-1)//é«˜è°ƒã€€fa çš„å‘¨æœŸ
+ #define  H5       ((proport/784)-1)//é«˜è°ƒã€€solçš„å‘¨æœŸ
+ #define  H6       ((proport/880)-1)//é«˜è°ƒã€€la çš„å‘¨æœŸ
+ #define  H7       ((proport/988)-1)//é«˜è°ƒã€€si çš„å‘¨æœŸ
 
 
 //  int music[];
